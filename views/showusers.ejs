@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALL USERS DATA</title>
+    <style>
+        table,th,td{
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <!-- showing the data of the users in tabular format -->
+     <table>
+        <tr>
+            <th>Id</th>
+            <th>Email</th>
+            <th>Username</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <% for(let user of data){%>
+        <tr>
+            <td><%= user.id %></td>
+            <td><%= user.email %></td>
+            <td><%= user.username %></td>
+            <td>
+            <form method = "GET" action="/user/<%=user.id%>/edit">
+            <button type="submit">Edit username</button>
+            </form>
+            </td>
+            <td>
+            <form method = "GET" action="/user/<%=user.id%>/delete">
+            <button type="submit">DELETE</button>
+            </form>
+            </td>
+        </tr>
+        <% } %>
+     </table>
+     <form method="GET" action="/user/new">
+     <button>NEW SIGN UP</button>
+     </form>
+</body>
+</html>
